@@ -13,6 +13,8 @@ import {
   DropdownItem,
 } from 'reactstrap';
 
+import { connect } from 'react-redux';
+import { changeRoute } from '../../actions/routeActions';
 
 function NavigationBar(props){
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +35,7 @@ function NavigationBar(props){
               		<NavLink onClick={() => props.changeRoute("exercisesLibrary")}>Exercises Library</NavLink>
             	</NavItem>
             	<NavItem>
-              		<NavLink onClick={() => props.changeRoute("posts")}>Posts</NavLink>
+              		<NavLink onClick={() => props.changeRoute("forum")}>Forum</NavLink>
             	</NavItem>
           	</Nav>
           	<UncontrolledDropdown inNavbar>
@@ -60,4 +62,4 @@ function NavigationBar(props){
 }
 
 
-export default NavigationBar;
+export default connect(null,{ changeRoute })(NavigationBar);
