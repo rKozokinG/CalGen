@@ -13,7 +13,7 @@ function ExerciseCard (props) {
     exercisePicture, 
     exerciseLink } = props.exercise
   return (
-      <Card className="m-4 shadow d-inline-flex"  style={{width: "230px", height: "400px"}}> 
+      <Card className="m-4 shadow d-inline-flex "  style={{width: "230px", height: "400px"}}> 
         <CardBody className="p-2">
           <CardTitle className="border-bottom border-right w-50 p-2 shadow-sm">{bodyPart}</CardTitle>
           

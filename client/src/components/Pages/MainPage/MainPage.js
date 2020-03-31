@@ -1,58 +1,7 @@
 import React from 'react';
 import NavigationBar from '../../NavigationBar/NavigationBar';
 import Library from '../../Library/Library';
-
-const db =[
-  {
-    exerciseName: "Push up" ,
-    bodyPart: "Chest",
-    level: 2,
-    equipment: "No Equipment",
-    exercisePicture: "https://upl.stack.com/wp-content/uploads/Quickly-Strengthen-Your-Upper-Body-With-Pyramid-Push-Ups.jpg",
-    exerciseLink: "https://www.youtube.com/watch?v=IODxDxX7oi4"
-  },
-  {
-    exerciseName: "Bridge" ,
-    bodyPart: "Lower back",
-    level: 3,
-    equipment: "No Equipment",
-    exercisePicture: "https://www.fitstream.com/images/bodyweight-training/bodyweight-exercises/full-bridge.jpeg",
-    exerciseLink: ""
-  },
-  {
-    exerciseName: "Pike Push up" ,
-    bodyPart: "Shulders",
-    level: 3,
-    equipment: "No Equipment",
-    exercisePicture: "https://i.pinimg.com/originals/bb/9f/5e/bb9f5e42a97ca4bd6314afd116c8eda0.jpg",
-    exerciseLink: ""
-  },
-  {
-    exerciseName: "pull up" ,
-    bodyPart: "back",
-    level: 3,
-    equipment: "Bar",
-    exercisePicture: "https://weighttraining.guide/wp-content/uploads/2016/10/pull-up.png",
-    exerciseLink: ""
-  },
-  {
-    exerciseName: "Rows" ,
-    bodyPart: "Chest",
-    level: 1,
-    Equipment: "Bar",
-    exercisePicture: "https://i.pinimg.com/originals/da/0e/d7/da0ed7bbe690e3752b549e51b5f1b32b.png",
-    exerciseLink: ""
-  },
-  {
-    exerciseName: "Squats" ,
-    bodyPart: "Legs",
-    level: 1,
-    equipment: "No Equipment",
-    exercisePicture: "https://assets.change.org/photos/0/ez/ha/KKEZHaKAiEEjSOd-800x450-noPad.jpg",
-    exerciseLink: ""
-  }
-  
-]
+import './MainPage.css';
 
 const MainPage = (props) => {
 	let display;
@@ -60,30 +9,50 @@ const MainPage = (props) => {
 	switch(props.route) {
 		case "home":
 			display = (
-				<div>
+				<div className = " display-4 p-5 bg-home text-light">
+		    		<h1 className = " text-center"> ClaGen </h1>
+		    		<h4 className = "text-capitalize text-center m-5 py-3 px-5 "> A simple way to train. Choose your level, Choose Bodyparts to train, Choose your Equipment to use. Do the workout and get strong. </h4>
 				</div>
 			)
 			break;
 		case "workoutGenerator":
 	    	display = (
 		    	<div>
+		    		<h1> workoutGenerator </h1>
 				</div>
 			)
 		    break;
 	    case "exercisesLibrary":
 		    display = (
-	    		<Library data={db} />
+	    		<Library />
 			)
 	    	break;
-	    case "posts":
+	    case "forum":
 	    	display = (
 	    		<div>
+		    		<h1> forum </h1>
+				</div>
+			)
+	    	break;
+	    case "account":
+	    	display = (
+	    		<div>
+		    		<h1> account </h1>
+				</div>
+			)
+	    	break;
+	    case "contactUs":
+	    	display = (
+	    		<div>
+		    		<h1> contactUs </h1>
 				</div>
 			)
 	    	break;
 		default://home
 			display = (
-				<div>
+				<div className="">
+		    		<h1> ClaGen </h1>
+		    		<h3> A simple way to train. Choose your level, Choose Bodyparts to train, Choose your Equipment to use. Do the workout and get strong </h3>
 				</div>
 			)
 	}

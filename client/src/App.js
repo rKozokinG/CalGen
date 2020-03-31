@@ -1,47 +1,41 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import NavigationBar from './components/NavigationBar/NavigationBar';
-import Library from './components/Library/Library';
-
 import LoginPage from './components/Pages/LoginPage/LoginPage';
 import RegisterPage from './components/Pages/LoginPage/RegisterPage';
 import MainPage from './components/Pages/MainPage/MainPage';
 
-
+import { connect } from 'react-redux';
 
 
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      route:"login",
-    };
-  }
-
-  changeRoute = (route) => {
-    this.setState({route : route});
+  onChange(event){
+    this.setState({[event.target.name] : event.target.value});
   }
 
   WindowDisplay = () => {
-    if (this.state.route === "login") {
-      return(<LoginPage changeRoute={this.changeRoute}/>)
+    if (this.props.route === "login") {
+      return(<LoginPage onChange={this.onChange}/>)
     }
-    else if (this.state.route === "register") {
-      return(<RegisterPage changeRoute={this.changeRoute}/>)
+    else if (this.props.route === "register") {
+      return(<RegisterPage onChange={this.onChange}/>)
     }
     else{
-      return(<MainPage changeRoute={this.changeRoute} route={this.state.route}/>)
+      return(<MainPage route={this.props.route}/>)
     }
   }
   render(){
     let windowDisplay = this.WindowDisplay();
     return(
-      <div>
+      <div className = "bg-transparent">
         {windowDisplay}
       </div>
     ); 
   }
 }
 
-export default App;
+const mapStateToProps = state =>({
+  route: state.route.route
+})
+
+export default connect(mapStateToProps,null)(App);

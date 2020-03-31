@@ -7,44 +7,36 @@ import {
 	Input 
 } from 'reactstrap';
 
-class LoginPage extends React.Component{
+import { connect } from 'react-redux';
+import { changeRoute } from '../../../actions/routeActions';
+
+class RegisterPage extends React.Component{
 	constructor (props) {
 		super(props);
     	this.state = {
-			registerEmail : '',
-			registerPassword : '',
-			registerName: ''
+			email : '',
+			password : '',
+			name: ''
 		};
-	}
 
-	onRegisterEmailChange = (event) => {
-  		this.setState({registerEmail : event.target.value});
-
-  	}
-
-	onRegisterPasswordChange = (event) => {
-  		this.setState({registerPassword : event.target.value});
-	}
-	onRegisterNameChange = (event) => {
-  		this.setState({registerName : event.target.value});
+		this.onChange = this.props.onChange.bind(this);
 	}
 
 	onSubmitSignIn = (event) =>{
 		const {changeRoute} = this.props;
 		changeRoute("login");
-
 	}
 	render(){
 		return (
 			<div className="d-flex justify-content-center">
-				<Form className="border border-light m-5 py-3 px-5 shadow-lg text-white" >
-					<legend dark>Register</legend>
+				<Form className="bg-dark border border-light m-5 py-3 px-5 shadow-lg text-white" >
+					<legend>Register</legend>
 					<FormGroup className="mb-2 mr-sm-2 mb-sm-0">
 	        			<Label for="exampleName" className="mr-sm-2">
 	        				Name
 	        			</Label>
 	        			<Input
-	        				onChange = {this.onRegisterNameChange} 
+	        				onChange = {this.onChange} 
 	        				type="text" 
 	        				name="name" 
 	        				id="exampleName" 
@@ -55,7 +47,7 @@ class LoginPage extends React.Component{
 	        				Email
 	        			</Label>
 	        			<Input
-	        				onChange = {this.onRegisterEmailChange} 
+	        				onChange = {this.onChange} 
 	        				type="email" 
 	        				name="email" 
 	        				id="exampleEmail" 
@@ -64,7 +56,7 @@ class LoginPage extends React.Component{
 	      			<FormGroup className="mb-2 mr-sm-2 mb-sm-0">
 				        <Label for="examplePassword" className="mr-sm-2">Password</Label>
 				        <Input
-				        	onChange = {this.onRegisterPasswordChange}
+				        	onChange = {this.onChange}
 				        	type="password" 
 				        	name="password"
 				        	id="examplePassword"
@@ -77,4 +69,4 @@ class LoginPage extends React.Component{
 	}
 } 
 
-export default LoginPage;
+export default connect(null,{changeRoute})(RegisterPage);
