@@ -1,7 +1,9 @@
-import {CHANGE_ROUTE} from '../actions/types';
+import { CHANGE_ROUTE, CHANGE_GENERATOR_ROUTE } from '../actions/types';
+import { HOME, WORKOUT_TYPE } from "../constants/routes";
 
 const initialState = {
-	route : 'home'
+	route : HOME,
+	generatorRoute : WORKOUT_TYPE
 }
 
 export default function(state = initialState, action){
@@ -10,6 +12,11 @@ export default function(state = initialState, action){
 			return {
 				...state,
 				route : action.payload
+			}
+		case CHANGE_GENERATOR_ROUTE:
+			return {
+				...state,
+				generatorRoute : action.payload
 			}
 		default:
 			return state;

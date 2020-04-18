@@ -7,6 +7,7 @@ import {
 	Input 
 } from 'reactstrap';
 
+import * as routes from '../../../constants/routes';
 import { connect } from 'react-redux';
 import { changeRoute } from '../../../actions/routeActions';
 
@@ -24,7 +25,7 @@ class RegisterPage extends React.Component{
 
 	onSubmitSignIn = (event) =>{
 		const {changeRoute} = this.props;
-		changeRoute("login");
+		changeRoute(routes.LOGIN);
 	}
 	render(){
 		return (

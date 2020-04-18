@@ -1,23 +1,29 @@
 const mongoose = require('mongoose');
 
+
 //defining a model
 const Schema = mongoose.Schema;
 const exercise = new Schema({
-  name: { 
-  	type: String
+  exerciseName: { 
+  	type: String,
+    //unique: true
   },
   bodyPart: { 
   	type: String, 
-  	default: 'full body' 
+  	default: 'Full Body' 
   },
-  picture: {
+  exercisePicture: {
     type: String
   },
   level: { 
   	type: Number, 
   	default: 1 
   },
-  link: { 
+  equipment: {
+    type: String, 
+    default: 'No Equipment'
+  },
+  exerciseLink: { 
   	type: String
   },
   date: { 

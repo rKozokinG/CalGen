@@ -10,30 +10,33 @@ import SearchForm from '../../SearchForm/SearchForm'
 import { connect } from 'react-redux';
 import { fetchExercisesSelective } from '../../../actions/exerciseActions';
 
-const bodyPartCheckBoxes = ["Full Body","Upper Body","Lower Body","Chest","Back","Shoulder","Legs","Abs","Biceps","Triceps","Lower Back"];
-const levelCheckBoxes = ["Easy","Intermediate","Advance","Hard","Hell No"];
-const equipmentCheckBoxes = ["No Equipment","Bar","Rings","Chair"];
+import { BODY_PARTS, LEVELS_LABEL, LEVELS, EQUIPMENTS } from '../../../constants/exercisesConsts';
 
+//initializing the sate of the component
 const initialState = {
   bodyPart: {}, 
   level: {},
-  equipment: {}  
+  EQUIPMENTS: {}  
 };
 let i;
-for (i = bodyPartCheckBoxes.length - 1; i >= 0; i--) {
-  initialState.bodyPart[bodyPartCheckBoxes[i].toLowerCase()] = false;
+for (i = BODY_PARTS.length - 1; i >= 0; i--) {
+  initialState.bodyPart[BODY_PARTS[i]] = false;
 }
-for (i = levelCheckBoxes.length - 1; i >= 0; i--) {
-  initialState.level[levelCheckBoxes[i].toLowerCase()] = false;
+for (i = LEVELS.length - 1; i >= 0; i--) {
+  initialState.level[LEVELS[i]] = false;
 }
-for (i = equipmentCheckBoxes.length - 1; i >= 0; i--) {
-  initialState.equipment[equipmentCheckBoxes[i].toLowerCase()] = false;
+for (i = EQUIPMENTS.length - 1; i >= 0; i--) {
+  initialState.EQUIPMENTS[EQUIPMENTS[i]] = false;
 }
+//end of initializing the sate of the component
 
 function LibraryNav(props){
   const [filters, setFilters] = useState(initialState);
 
-  //filter = {type : filter}
+  //filter = {
+  //  filterType : filterType,
+  //  filterName : filterName
+  //}
   const changeFilters = (filter) => { 
     setFilters(preState => {
       var newState = {...preState};
@@ -45,9 +48,9 @@ function LibraryNav(props){
     <div>
       <Navbar className = "shadow d-flex align-items-start" color="primary">
         <Nav className="mr-auto" >
-            <ChooseButton boxName="BodyPart" checkBoxesValues={bodyPartCheckBoxes} changeFilters={changeFilters}/>
-            <ChooseButton boxName="Level" checkBoxesValues={levelCheckBoxes} changeFilters={changeFilters}/>
-            <ChooseButton boxName="Equipment" checkBoxesValues={equipmentCheckBoxes} changeFilters={changeFilters}/>
+            <ChooseButton boxValue="Body Part" boxName="bodyPart" checkBoxesValues={BODY_PARTS} checkBoxesLabels={BODY_PARTS} changeFilters={changeFilters}/>
+            <ChooseButton boxValue="Level" boxName="level" checkBoxesValues={LEVELS} checkBoxesLabels={LEVELS_LABEL} changeFilters={changeFilters}/>
+            <ChooseButton boxValue="EQUIPMENTS" boxName="EQUIPMENTS" checkBoxesValues={EQUIPMENTS} checkBoxesLabels={EQUIPMENTS} changeFilters={changeFilters}/>
             <div>
               <Button className="m-2" color="secondary" onClick={() => props.fetchExercisesSelective(filters)}>Filter</Button>
             </div>

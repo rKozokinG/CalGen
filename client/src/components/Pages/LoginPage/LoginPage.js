@@ -7,6 +7,7 @@ import {
 	Input 
 } from 'reactstrap';
 
+import * as routes from '../../../constants/routes';
 import { connect } from 'react-redux';
 import { changeRoute } from '../../../actions/routeActions';
 
@@ -23,7 +24,7 @@ class LoginPage extends React.Component{
 
 	onSubmitSignIn = (event) =>{
 		const {changeRoute} = this.props;
-		changeRoute("home");
+		changeRoute(routes.HOME);
 	}
 	render(){
 		const {changeRoute} = this.props;
@@ -55,7 +56,7 @@ class LoginPage extends React.Component{
 		      			</FormGroup>
 		      			<Button className="my-2" onClick = {this.onSubmitSignIn}>Sign In</Button>
 		      			<br/>
-		      			<Button onClick = {() => changeRoute('register')}>Register</Button>
+		      			<Button onClick = {() => changeRoute(routes.REGISTER)}>Register</Button>
 		    		</Form>
 		    	</div>	
 			</div>

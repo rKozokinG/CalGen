@@ -21,7 +21,7 @@ class App extends Component {
       return(<RegisterPage onChange={this.onChange}/>)
     }
     else{
-      return(<MainPage route={this.props.route}/>)
+      return(<MainPage/>)
     }
   }
   render(){

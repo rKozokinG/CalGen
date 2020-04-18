@@ -1,26 +1,16 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
-const exercises = require('./api/exercises');
-
+const api = require('./routes/api/');
 const app = express();
 
-
-//Body Parser middleware
+//Middleware applyed on all requerts
 app.use(bodyParser.json());
+app.use(cors());
 
-//connecting to db
-db = require("./config/keys").MONGOOSE_URI;
-mongoose.connect(db, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('Connected to database...'))
-.catch(err => console.log(err));
-
-//routes all /api/exercises requests
-app.use('/api/exercises',exercises);
+//routes all /api/ requests
+app.use('/api',api);
 
 //Opening port
 const port = process.env.PORT || 5000

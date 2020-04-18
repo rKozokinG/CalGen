@@ -5,7 +5,7 @@ function ExercisesCards (props) {
   const cards = props.data.map((exerciseObj) => {
     return (
         <ExerciseCard
-          key = {exerciseObj.exerciseName}
+          key = {exerciseObj.exercise_name}
           exercise = {exerciseObj}
         />
     )
