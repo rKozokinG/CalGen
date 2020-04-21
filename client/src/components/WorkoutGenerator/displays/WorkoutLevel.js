@@ -26,7 +26,6 @@ function WorkoutLevel (props){
 			<CustomInput 
 			type="radio"
 			onClick = {() => {
-				console.log(level);
 				setLevel(level)}} 
 			name="LevelName"
 			id={LEVELS_LABEL[level - 1]} 

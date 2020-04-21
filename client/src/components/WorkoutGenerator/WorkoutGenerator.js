@@ -7,6 +7,8 @@ import WorkoutLevel from "./displays/WorkoutLevel";
 import WorkoutEquipment from "./displays/WorkoutEquipment";
 import SkillOrStrength from "./displays/SkillOrStrength";
 import NumberOfExercises from "./displays/NumberOfExercises";
+import Workout from "./displays/Workout";
+
 
 import * as genretorRoutes from '../../constants/routes';
 import { connect } from 'react-redux';
@@ -37,7 +39,7 @@ function WorkoutGenerator (props){
 			display = <NumberOfExercises/>
 			break;
 		case genretorRoutes.WORKOUT:
-			display = <WorkoutType/>
+			display = <Workout/>
 			break;
 		default:
 			display = <h1> Penis</h1>
